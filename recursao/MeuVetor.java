@@ -173,10 +173,10 @@ public class MeuVetor {
     }
     //quick sort
     public void quick (int p, int r) {
-        System.out.println("p = " + p + ", r = " + r);
+        //System.out.println("p = " + p + ", r = " + r);
         if (p < r) {
             int q = partition(p, r);
-            System.out.println("q = " + q);
+            //System.out.println("q = " + q);
             quick(p, q - 1);
             quick(q + 1, r);
         }

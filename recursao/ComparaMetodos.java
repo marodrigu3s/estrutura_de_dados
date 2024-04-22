@@ -10,6 +10,7 @@ public class ComparaMetodos {
         int t = scanner.nextInt();
         while (t > 0) {
             v = new MeuVetor(t);
+
             // v.preencheVetor(t * 10);
             // System.out.println("1o vetor gerado\n" + v);
             // ini = new Date().getTime();
@@ -18,13 +19,24 @@ public class ComparaMetodos {
             // System.out.println("Ordenacao pelo insertion\n" + v);
             // System.out.println("insertion demorou " + (fim - ini) + "ms\n");
             // v.resetVetor();
+
             v.preencheVetor(t * 10);
+
             //System.out.println("2o vetor gerado\n" + v);
+            //Primeira vez
             ini = new Date().getTime();
             v.quick(0, t - 1);
             fim = new Date().getTime();
             //System.out.println("ordenacao pelo quick\n" + v);
-            System.out.println("quick demorou " + (fim - ini) + "ms\n");
+            System.out.println("Na primeira vez, quick demorou  " + (fim - ini) + "ms\n");
+
+            //Segunda vez
+            ini = new Date().getTime();
+            v.quick(0, t - 1);
+            fim = new Date().getTime();
+            
+            //System.out.println("ordenacao pelo quick\n" + v);
+            System.out.println("Na seunda vez, quick demorou  " + (fim - ini) + "ms\n");
             System.out.print("\nEscolha o tamanh do vetor, 0 encerra: ");
             t = scanner.nextInt();
             // mais ou menos o nosso projeto da T1
