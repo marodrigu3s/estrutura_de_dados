@@ -1,0 +1,1 @@
+Esse repositório foi feito para aplicar os códigos desenvolvidos na matéria "Algoritmos, Estrutura de Dados e Programação", aplicada no 3° semestre do curso de Ciência da Computação. 
