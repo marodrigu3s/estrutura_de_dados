@@ -6,12 +6,12 @@ public class Fila {
 
     public static final int CAPACIDADE_MIN = 10; // Varável "final" é sempre constante, método "final" não pode ser sobrescrito, classe "final" nao pode ser herdada
 
-    public Fila () { 
-        dados = new int[CAPACIDADE_MIN];
-        ultimo = dados.length-1;
-        primeiro = 0;
-        tamanho = 0;
-    }
+    // public Fila () { 
+    //     dados = new int[CAPACIDADE_MIN];
+    //     ultimo = dados.length-1;
+    //     primeiro = 0;
+    //     tamanho = 0;
+    // }
 
     public Fila (int capacidade) {
         if (capacidade > 10)
@@ -21,6 +21,14 @@ public class Fila {
         ultimo = dados.length - 1;
         primeiro = 0;
         tamanho = 0;
+    }
+
+    public Fila () {
+        this(CAPACIDADE_MIN);
+    }
+
+    public int getTamanho() {
+        return tamanho;
     }
 
     public boolean estaVazia() {
@@ -52,17 +60,24 @@ public class Fila {
         return temp;
     }
     @Override
-    public String toString(){
-        if(v.estavazia()){
-            return "Fila Vazia";
-        }
+    public String toString () {
+        if (estaVazia()) return "fila vazia";
         String s = "";
         int i = primeiro;
-        do{
-            s = s + dados[i] + "";
+        do {
+            s = s + dados[i] + " ";
             i = proxima(i);
-        }
-        while(i != proxima(i));
+        } while (i != proxima(i));
         return s;
+    }
+    public StringDoVetor() {
+        if (primeiro <= ultimo) {
+            for (int i = 0; i<primeiro; i++) 
+                System.out.print("_ ");
+            for (int i=primeiro; i <=ultimo; i++)
+                System.out.print(dados[i] + " ");
+            for (int i=ultimo+1; i<dados.length; i++)
+                System.out.print("_ ");
+        }
     }
 }

@@ -1,18 +1,18 @@
 import java.util.Random;
-
-public class TesteFila {
-    public static void main (String[] args) {
+ 
+public class Teste {
+    public static void main(String[] args) {
         Fila f = new Fila();
         Random r = new Random();
         do {
             if (r.nextBoolean()) {
-                f.enfileira(r.nextInt(10));
+                if (!f.estaCheia()) f.enfileira(r.nextInt(10));
             }
             else {
-                    if (!f.estaVazia())System.out.println(f.desenfileira() + " saiu");
+                if (!f.estaVazia()) System.out.println("\n" + f.desinfileira() + " saiu");
             }
             System.out.println(f);
+            f.mostraVetor();
         } while (!f.estaVazia());
-    
     }
 }
