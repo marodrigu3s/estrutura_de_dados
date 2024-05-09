@@ -26,7 +26,7 @@ public class ABB {
                 atual.setEsquerda(novo);
             }
             else {
-                insereRec(novo, atual);
+                insereRec(novo, atual.getEsquerda());
             }
         }
         else{
@@ -34,7 +34,7 @@ public class ABB {
                 atual.setDireita(novo);
             }
             else{
-                insereRec(novo, atual);
+                insereRec(novo, atual.getDireita());
             }
         }
     }
