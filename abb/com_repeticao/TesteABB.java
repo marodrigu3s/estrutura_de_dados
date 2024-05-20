@@ -12,8 +12,8 @@ public class TesteABB {
             System.out.print(v[i] + " ");
             abb.insere(v[i]);
         }
-        System.out.println("\na arvore:\n" + abb.stringInOrder());
-        System.out.println("\n nivel: " + abb.nivel());
+        System.out.println("\na arvore:\n" + abb.stringEmOrdem());
+        System.out.println("\nnivel: " + abb.nivel());
         System.out.println("\nnumero de nos: " + abb.numeroNos());
     }
 }
