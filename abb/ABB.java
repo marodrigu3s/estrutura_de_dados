@@ -154,15 +154,91 @@ public class ABB {
             constroiLista(lista, atual.getDireita());
         }
     }
-    public boolean buscaBinaria(x) {
-        if (estaVazia()) return false;
+
+    public boolean buscaBinaria(int x) {
+        if (estaVazia())
+            return false;
         return buscaBinariaRec(x, raiz);
 
     }
-    boolean buscaBinariaRec ( int x, No atual ) {
-        if (atual == null) return false;
-        if (atual.getInfo() == x) return true;
-        if (x < atual.getInfo()) return buscaBinariaRec(x, atual.getEsquerda());
+
+    boolean buscaBinariaRec(int x, No atual) {
+        if (atual == null)
+            return false;
+        if (atual.getInfo() == x)
+            return true;
+        if (x < atual.getInfo())
+            return buscaBinariaRec(x, atual.getEsquerda());
         return buscaBinariaRec(x, atual.getDireita());
+    }
+
+    public boolean remove(int x) {
+        if (estaVazia())
+            return false;
+        return removeRec(x, raiz, null, false);
+    }
+
+    boolean removeRec(int x, No atual, No pai, boolean eFilhoEsquerdo) {
+        if (atual != null) {
+            if (x == atual.getInfo()) {
+                if (atual.getDireita() == null && atual.getEsquerda() == null) { // atual não tem filhos
+                if (pai == null) {
+                    raiz = null;
+                }
+                else if (eFilhoEsquerdo) {
+                        pai.setEsquerda(null);
+                    } else {
+                        pai.setDireita(null);
+                    }
+                } else if (atual.getDireita() == null) {// tem só o filho da esquerda
+                if (pai == null) {
+                    raiz = atual.getEsquerda();
+                }
+                 else if (eFilhoEsquerdo) {
+                        pai.setEsquerda(atual.getEsquerda());
+                    } else {
+                        pai.setDireita(atual.getEsquerda());
+                    }
+                } else if (atual.getEsquerda() == null) {// tem só o filho da direita
+                if (pai == null) {
+                    raiz = atual.getDireita();
+                }
+                else if (eFilhoEsquerdo) {
+                        pai.setEsquerda(atual.getDireita());
+                    } else {
+                        pai.setDireita(atual.getDireita());
+                    }
+                } else { // tem os 2 filhos
+                    if (pai == null) { //se for a raiz
+                        raiz = atual.getDireita();
+                    } 
+                    else {
+                        // o pai sempre adota a sub arvore da direita
+                        if (eFilhoEsquerdo) {
+                            pai.setEsquerda(atual.getDireita());
+                        } else {
+                            pai.setDireita(atual.getDireita());
+                        }
+                    }
+
+                    // encontrar o sucessor para adotar a sub arvore da esquerda
+                    No sucessor = atual.getDireita();
+                    while (sucessor.getEsquerda() != null) {
+                        sucessor = sucessor.getEsquerda();
+                    }
+                    sucessor.setEsquerda(atual.getEsquerda());
+                }
+                return true;
+            } else if (x < atual.getInfo()) {
+                eFilhoEsquerdo = true;
+                pai = atual;
+                removeRec(x, atual.getEsquerda(), pai, eFilhoEsquerdo);
+            } else {
+                eFilhoEsquerdo = false;
+                pai = atual;
+                removeRec(x, atual.getDireita(), pai, eFilhoEsquerdo);
+            }
+        }
+        return false;
     }
 }
